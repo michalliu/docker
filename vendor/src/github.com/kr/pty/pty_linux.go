@@ -7,6 +7,11 @@ import (
 	"unsafe"
 )
 
+type (
+        _C_int  int32
+        _C_uint uint32
+)
+
 var (
 	ioctl_TIOCGPTN   = _IOR('T', 0x30, unsafe.Sizeof(_C_uint(0))) /* Get Pty Number (of pty-mux device) */
 	ioctl_TIOCSPTLCK = _IOW('T', 0x31, unsafe.Sizeof(_C_int(0)))  /* Lock/unlock Pty */
