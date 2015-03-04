@@ -34,7 +34,7 @@ func GetWinsize(fd uintptr) (*Winsize, error) {
 }
 
 func SetWinsize(fd uintptr, ws *Winsize) error {
-	_, _, err := syscall.Syscall(syscall.SYS_IOCTL, fd, uintptr(syscall.TIOCSWINSZ), uintptr(unsafe.Pointer(ws)))
+	_, _, err := syscall.Syscall(syscall.SYS_IOCTL, fd, uintptr(0x5414), uintptr(unsafe.Pointer(ws)))
 	// Skipp errno = 0
 	if err == 0 {
 		return nil
