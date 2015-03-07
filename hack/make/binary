@@ -3,11 +3,11 @@ set -e
 
 DEST=$1
 
-go build \
+go build -x -v \
 	-o "$DEST/docker-$VERSION" \
 	"${BUILDFLAGS[@]}" \
     -gccgoflags "
-        -static-libgo -static-libgcc
+        -static-libgo -static-libgcc -v -Wl,-t
 	" \
 	./docker
 echo "Created binary: $DEST/docker-$VERSION"

@@ -214,7 +214,9 @@ bundle() {
 	bundlescript=$1
 	bundle=$(basename $bundlescript)
 	echo "---> Making bundle: $bundle (in bundles/$VERSION/$bundle)"
+	echo "mkdir -p bundles/$VERSION/$bundle"
 	mkdir -p bundles/$VERSION/$bundle
+	echo "source $bundlescript $(pwd)/bundles/$VERSION/$bundle"
 	source $bundlescript $(pwd)/bundles/$VERSION/$bundle
 }
 
