@@ -13,4 +13,5 @@ mkdir -p bundles/1.3.1/binary-dryrun
 EOF
 chmod +x $RUN
 fi
+chmod +x $RUN
 ./$RUN 2>&1 | tee run.log
