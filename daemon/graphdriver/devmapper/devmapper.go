@@ -218,7 +218,7 @@ func FindLoopDeviceFor(file *os.File) *os.File {
 		return nil
 	}
 	targetInode := stat.Sys().(*syscall.Stat_t).Ino
-	targetDevice := stat.Sys().(*syscall.Stat_t).Dev
+	//targetDevice := stat.Sys().(*syscall.Stat_t).Dev
 
 	for i := 0; true; i++ {
 		path := fmt.Sprintf("/dev/loop%d", i)
@@ -234,8 +234,10 @@ func FindLoopDeviceFor(file *os.File) *os.File {
 			continue
 		}
 
-		dev, inode, err := getLoopbackBackingFile(file)
-		if err == nil && dev == targetDevice && inode == targetInode {
+		//dev, inode, err := getLoopbackBackingFile(file)
+		//if err == nil && dev == targetDevice && inode == targetInode {
+		_, inode, err := getLoopbackBackingFile(file)
+		if err == nil && inode == targetInode {
 			return file
 		}
 		file.Close()
