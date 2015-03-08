@@ -1,4 +1,5 @@
 #!/bin/sh
+. envsetup.sh
 SCRIPT=/tmp/build-binary-dryrun.log
 RUN=run.sh
 if [ ! -f $RUN ];then
