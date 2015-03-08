@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+DEST=$1
+
+go build -n -x \
+	-o "$DEST/docker-$VERSION" \
+	"${BUILDFLAGS[@]}" \
+    -gccgoflags "
+        -static-libgo -static-libgcc
+	" \
+	./docker
+echo "Created binary: $DEST/docker-$VERSION"
