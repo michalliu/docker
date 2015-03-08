@@ -561,7 +561,7 @@ func (devices *DeviceSet) initDevmapper(doInit bool) error {
 	//	- Managed by docker
 	//	- The target of this device is at major <maj> and minor <min>
 	//	- If <inode> is defined, use that file inside the device as a loopback image. Otherwise use the device itself.
-	devices.devicePrefix = fmt.Sprintf("docker-%d:%d-%d", major(sysSt.Dev), minor(sysSt.Dev), sysSt.Ino)
+	devices.devicePrefix = fmt.Sprintf("docker-%d:%d-%d", major(uint64(sysSt.Dev)), minor(uint64(sysSt.Dev)), sysSt.Ino)
 	log.Debugf("Generated prefix: %s", devices.devicePrefix)
 
 	// Check for the existence of the device <prefix>-pool
